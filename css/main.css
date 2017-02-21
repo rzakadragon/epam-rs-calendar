@@ -1,4 +1,4 @@
-/** 1. browser upgrade **/
+/** 0. browser upgrade **/
 .browserupgrade {
     margin: 0.2em 0;
     background: #ccc;
@@ -10,6 +10,98 @@ html.halt body {
     background: black;
 }
 
-/** 2. general elements positioning **/
+/** 1. general elements positioning ( M-L-XL size ) **/
+
+.header-container {
+    background: #FF9800;
+    height: 180px;
+}
+
+.main-container {
+    position: relative;
+    width: 100%;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: stretch;
+
+    margin-left: 50px;
+
+    background: azure;
+}
+
+.column {
+    height: 100px;
+    /* day_column_width = 100% / 7 = 14.28% */
+    width: 14.28%;
+
+    background: aqua;
+    border: 1px solid rgba(76, 175, 80, 0.54);
+
+    z-index: 100;
+}
+
+table.back-table {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+/** 1.1 adapt for S size **/
+
+@media screen and (max-width: 767px) {
+    .header-container {
+        height: 80px;
+    }
+
+    main {
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .column {
+        width: 100%;
+    }
+
+    table.back-table {
+        display: none;
+    }
+}
+
+/** 2. table background layout **/
+table.back-table th {
+    height: 200px;
+    border-left: 1px solid #EEE;
+}
+
+table.back-table td {
+    height: 29px;
+    border-left: 1px solid #EEE;
+}
+
+table.back-table tbody tr:nth-child(even) td:nth-child(n+2),
+table.back-table th {
+    border-bottom: 1px solid #eee;
+}
+
+table.back-table tbody tr td:first-child {
+    width: 49px;
+    position: relative;
+}
+
+table.back-table span {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: -7px;
+}
+
 
 /** N. typography **/
+table.back-table {
+    font-size: 14px;
+}
