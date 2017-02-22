@@ -34,11 +34,11 @@ main {
 }
 
 .column {
-    height: 100px;
     /* day_column_width = 100% / 7 = 14.28% */
     width: 14.28%;
+    padding: 0 10px;
 
-    background: aqua;
+    background: rgba(0, 255, 255, 0.14);
     border: 1px solid rgba(76, 175, 80, 0.54);
 
     z-index: 100;
@@ -50,6 +50,62 @@ table.back-table {
     top: 0;
     left: 0;
 }
+
+.day-header {
+    height: 185px;
+    /*background: rgba(255, 192, 203, 0.55);*/
+}
+    .date-cover {
+        height: 98px;
+        /*background: aliceblue;*/
+        box-sizing: border-box;
+        padding-top: 10px;
+    }
+        .weekday {
+            font-size: 16px;
+            padding-left: 8px;
+            font-weight: 300;
+        }
+        .date {
+            font-size: 58px;
+            line-height: 58px;
+            padding-left: 7px;
+            display: block;
+        }
+        
+    .events-cover {
+        height: 88px;
+        /*background: indianred;*/
+    }
+        .events-cover span {
+            color: #fff;
+            font-size: 14px;
+            line-height: 14px;
+            display: block;
+            box-sizing: border-box;
+            height: 27px;
+            margin-bottom: 2px;
+            padding: 5px 0 0 9px;
+            border-radius: 3px;
+        }
+        .birthdays {
+            background: #33b679;
+        }
+        .events {
+            background: #029ae4;
+        }
+        span.more-events {
+            color: #616161;
+        }
+        .more-events:hover {
+            text-decoration: underline;
+        }
+
+.day-body {
+    height: 1368px;
+    background: rgba(240, 255, 243, 0.6);
+}
+
 
 /** 1.1 adapt for S size **/
 
@@ -74,12 +130,12 @@ table.back-table {
 
 /** 2. table background layout **/
 table.back-table th {
-    height: 200px;
+    height: 185px;
     border-left: 1px solid #EEE;
 }
 
 table.back-table td {
-    height: 29px;
+    height: 28px;
     border-left: 1px solid #EEE;
 }
 
