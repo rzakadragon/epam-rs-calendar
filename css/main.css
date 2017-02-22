@@ -30,7 +30,7 @@ main {
 
     margin-left: 50px;
 
-    background: azure;
+    /*background: azure;*/
 }
 
 .column {
@@ -38,8 +38,8 @@ main {
     width: 14.28%;
     padding: 0 10px;
 
-    background: rgba(0, 255, 255, 0.14);
-    border: 1px solid rgba(76, 175, 80, 0.54);
+    /*background: rgba(0, 255, 255, 0.14);*/
+    /*border: 1px solid rgba(76, 175, 80, 0.54);*/
 
     z-index: 100;
 }
@@ -56,7 +56,7 @@ table.back-table {
     /*background: rgba(255, 192, 203, 0.55);*/
 }
     .date-cover {
-        height: 98px;
+        height: 99px;
         /*background: aliceblue;*/
         box-sizing: border-box;
         padding-top: 10px;
@@ -73,19 +73,19 @@ table.back-table {
             display: block;
         }
         
-    .events-cover {
-        height: 88px;
+    .header-events-cover {
+        height: 85px;
         /*background: indianred;*/
     }
-        .events-cover span {
+        .header-events-cover span {
             color: #fff;
             font-size: 14px;
             line-height: 14px;
             display: block;
             box-sizing: border-box;
-            height: 27px;
+            height: 26px;
             margin-bottom: 2px;
-            padding: 5px 0 0 9px;
+            padding: 7px 0 0 9px;
             border-radius: 3px;
         }
         .birthdays {
@@ -102,9 +102,33 @@ table.back-table {
         }
 
 .day-body {
+    position: relative;
+    box-sizing: border-box;
     height: 1368px;
-    background: rgba(240, 255, 243, 0.6);
+    /*background: rgba(240, 255, 243, 0.6);*/
 }
+    .event-cover {
+        position: absolute;
+        box-sizing: border-box;
+        width: 100%;
+        padding: 5px 8px;
+        border-radius: 3px;
+        color: #fff;
+        font-size: 14px;
+        background: #029ae4;
+    }
+        .important {
+            background: #f05722;
+        }
+        .event-cover span {
+            display: block;
+        }
+        .description {
+
+        }
+        .time {
+            text-transform: uppercase;
+        }
 
 
 /** 1.1 adapt for S size **/
@@ -154,10 +178,65 @@ table.back-table span {
     width: 100%;
     text-align: center;
     bottom: -7px;
+    text-transform: uppercase;
+    color: #757575;
 }
 
 
 /** N. typography **/
+body {
+    font-family: 'Roboto', sans-serif;
+}
 table.back-table {
     font-size: 14px;
+}
+
+/** N. hardcode events position **/
+#event-1 {
+    top: 58px;
+    height: 55px;
+}
+#event-2 {
+    top: 172px;
+    height: 227px;
+}
+#event-3 {
+    top: 146px;
+    height: 83px;
+}
+#event-4 {
+    top: 260px;
+    height: 113px;
+}
+#event-5 {
+    top: 400px;
+    height: 28px;
+}
+#event-6 {
+    top: 172px;
+    height: 28px;
+}
+#event-7 {
+    top: 229px;
+    height: 83px;
+}
+#event-8 {
+    top: 172px;
+    height: 28px;
+}
+#event-9 {
+    top: 286px;
+    height: 201px;
+}
+#event-10 {
+    top: 172px;
+    height: 56px;
+}
+#event-11 {
+    top: 628px;
+    height: 227px;
+}
+#event-12 {
+    top: 571px;
+    height: 284px;
 }
