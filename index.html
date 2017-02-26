@@ -27,11 +27,12 @@
 
             <main>
 
-                <input type="checkbox" id="sticky-dates-trigger" checked>
+                <input type="checkbox" class="trigger" id="sticky-dates" -checked>
+                <input type="checkbox" class="trigger" id="divider-on-each-day" -checked>
 
                 <div class="column">
                     <div class="day-header">
-                        <div class="date-cover">
+                        <div class="date-cover last-day">
                             <span class="weekday">Sun</span>
                             <span class="date">16</span>
                         </div>
@@ -40,20 +41,21 @@
                         </div>
                     </div>
                     <div class="day-body">
-                        <div class="event-cover" id="event-1">
+                        <div class="event-cover time-9-am lasts-60-min">
                             <span class="description">Food market</span>
                             <span class="time">9 — 10 am</span>
                         </div>
-                        <div class="event-cover" id="event-2">
+                        <div class="event-cover time-11-am lasts-240-min card crd-park">
                             <span class="description">Picnic at Central Park</span>
                             <span class="time">11 am — 3 pm</span>
+                            <span class="place">Central Park</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="column">
                     <div class="day-header">
-                        <div class="date-cover">
+                        <div class="date-cover last-day">
                             <span class="weekday">Mon</span>
                             <span class="date">17</span>
                         </div>
@@ -61,48 +63,53 @@
                         </div>
                     </div>
                     <div class="day-body">
-                        <div class="event-cover" id="event-3">
+                        <div class="event-cover time-10_30-am lasts-90-min">
                             <span class="description">Dentist appointment</span>
                             <span class="time">10:30 am — 12 pm</span>
                         </div>
-                        <div class="event-cover" id="event-4">
+                        <div class="event-cover time-12_30-pm lasts-120-min">
                             <span class="description">Haircut</span>
                             <span class="time">12:30 — 2:30 pm</span>
                         </div>
-                        <div class="event-cover" id="event-5">
+                        <div class="event-cover time-3-pm lasts-30-min person-specific pers-lucas">
+                            <span class="person-name">george lucas</span>
                             <span class="description">Call with Lucas</span>
                             <span class="time"></span>
+                            <div class="avatar"></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="column">
                     <div class="day-header">
-                        <div class="date-cover">
+                        <div class="date-cover today">
                             <span class="weekday">Tue</span>
                             <span class="date">18</span>
                         </div>
                         <div class="header-events-cover">
-                            <span class="birthdays">2 birthdays</span>
+                            <span class="birthdays short">2 birthdays</span>
+                            <span class="birthdays person p-alice">alice wonderland</span>
+                            <span class="birthdays person p-bob">bob marley</span>
                             <span class="events">John in town</span>
                             <span class="more-events">2 more</span>
                         </div>
                     </div>
                     <div class="day-body">
-                        <div class="event-cover" id="event-6">
+                        <div class="event-cover time-11-am lasts-30-min">
                             <span class="description">Walk Ella</span>
                             <span class="time"></span>
                         </div>
-                        <div class="event-cover important" id="event-7">
+                        <div class="event-cover time-12-pm lasts-90-min important card crd-restaurant">
                             <span class="description">Lunch with Alice</span>
                             <span class="time">12 — 1:30 pm</span>
+                            <span class="place">Sashimi</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="column">
                     <div class="day-header">
-                        <div class="date-cover">
+                        <div class="date-cover future-day">
                             <span class="weekday">Wed</span>
                             <span class="date">19</span>
                         </div>
@@ -111,7 +118,7 @@
                         </div>
                     </div>
                     <div class="day-body">
-                        <div class="event-cover" id="event-12">
+                        <div class="event-cover time-6-pm lasts-300-min">
                             <span class="description">Work on this page</span>
                             <span class="time">6 pm — 11 pm</span>
                         </div>
@@ -120,7 +127,7 @@
 
                 <div class="column">
                     <div class="day-header">
-                        <div class="date-cover">
+                        <div class="date-cover future-day">
                             <span class="weekday">Thu</span>
                             <span class="date">20</span>
                         </div>
@@ -128,42 +135,47 @@
                         </div>
                     </div>
                     <div class="day-body">
-                        <div class="event-cover" id="event-8">
+                        <div class="event-cover time-11-am lasts-30-min">
                             <span class="description">Walk Eella</span>
                             <span class="time"></span>
                         </div>
-                        <div class="event-cover" id="event-9">
+                        <div class="event-cover time-1-pm lasts-210-min card crd-big-city">
                             <span class="description">Flight to Boston</span>
                             <span class="time">1 — 6:25 pm</span>
+                            <span class="place">Los Angeles LAX</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="column">
                     <div class="day-header">
-                        <div class="date-cover">
+                        <div class="date-cover future-day">
                             <span class="weekday">Fri</span>
                             <span class="date">21</span>
                         </div>
                         <div class="header-events-cover">
-                            <span class="birthdays">3 birthdays</span>
+                            <span class="birthdays short">3 birthdays</span>
+                            <span class="birthdays person p-lorem">lorem ipsum</span>
+                            <span class="birthdays person p-steve">steve mcconnell</span>
+                            <span class="birthdays person p-hakon">håkon wium lie</span>
                         </div>
                     </div>
                     <div class="day-body">
-                        <div class="event-cover" id="event-10">
+                        <div class="event-cover time-11-am lasts-60-min">
                             <span class="description">Teem meeting</span>
                             <span class="time">11 am — 12 pm</span>
                         </div>
-                        <div class="event-cover important" id="event-11">
+                        <div class="event-cover time-7-pm lasts-240-min important card crd-bar">
                             <span class="description">Beer with Grusha</span>
                             <span class="time">7 pm — 11 pm</span>
+                            <span class="place">Balthazar</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="column">
                     <div class="day-header">
-                        <div class="date-cover">
+                        <div class="date-cover future-day">
                             <span class="weekday">Sat</span>
                             <span class="date">22</span>
                         </div>

@@ -1,4 +1,12 @@
-/** 0. browser upgrade **/
+/** 0. font style  **/
+body {
+    font-family: 'Roboto', sans-serif;
+}
+table.back-table {
+    font-size: 14px;
+}
+
+/** 0. browser upgrade message **/
 .browserupgrade {
     margin: 0.2em 0;
     background: #ccc;
@@ -83,13 +91,16 @@ table.back-table {
             line-height: 14px;
             display: block;
             box-sizing: border-box;
-            height: 26px;
+            min-height: 26px;
             margin-bottom: 2px;
             padding: 7px 0 0 9px;
             border-radius: 3px;
         }
         .birthdays {
             background: #33b679;
+        }
+        .birthdays.person {
+            display: none;
         }
         .events {
             background: #029ae4;
@@ -129,28 +140,16 @@ table.back-table {
         .time {
             text-transform: uppercase;
         }
+        .event-cover .place {
+            display: none;
+        }
+        .event-cover .person-name {
+            display: none;
+        }
+        .avatar {
+            display: none;
+        }
 
-
-/** 1.1 adapt for S size **/
-
-@media screen and (max-width: 767px) {
-    .header-container {
-        height: 80px;
-    }
-
-    main {
-        flex-direction: column;
-        margin: 0;
-    }
-
-    .column {
-        width: 100%;
-    }
-
-    table.back-table {
-        display: none;
-    }
-}
 
 /** 2. table background layout **/
 table.back-table th {
@@ -218,86 +217,404 @@ table.back-table span {
     outline: none;
 }
 
-/** N. typography **/
-body {
-    font-family: 'Roboto', sans-serif;
-}
-table.back-table {
-    font-size: 14px;
+
+
+/** 4. adapt for S size **/
+
+@media screen and (max-width: 767px) {
+    .header-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 85px;
+        width: 100%;
+        background: #ffffff;
+    }
+
+    .header-container header {
+        height: 80px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07), 0 6px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .header-events-cover span,
+    .day-body .event-cover {
+        padding: 10px 15px;
+        margin-bottom: 11px;
+    }
+
+    .main-container {
+        position: fixed;
+        top: 85px;
+        left: 0;
+        overflow-y: auto;
+        width: 100%;
+        height: 100%;
+        height: calc(100vh - 85px);
+    }
+
+    main {
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .column {
+        width: 100%;
+        padding: 0;
+        padding: 22px 0;
+    }
+
+    .day-header {
+        height: initial;
+    }
+
+    .date-cover {
+        height: 70px;
+        box-sizing: border-box;
+        padding-top: 0;
+        width: 80px;
+        float: left;
+        position: relative;
+    }
+
+    .date-cover.last-day {
+        color: #848484;
+    }
+    .date-cover.today {
+        color: #357ff4;
+    }
+
+    .date {
+        font-size: 43px;
+        padding-left: 25px;
+        line-height: 43px;
+    }
+    .weekday {
+        font-size: 21px;
+        position: absolute;
+        bottom: 0;
+        padding-left: 25px;
+    }
+
+    .header-events-cover {
+        height: inherit;
+        width: 75%;
+        width: calc(100vw - 124px);
+        float: right;
+        /*padding: 0 22px 24px 22px;*/
+        padding: 0 22px;
+
+        position: relative;
+    }
+
+    .header-events-cover *:last-child {
+        margin-bottom: 25px;
+    }
+
+    /** divider line **/
+    .today ~ .header-events-cover span:first-child:before {
+        content: ' ';
+        position: absolute;
+        bottom: 13px;
+        background: #0066f2;
+        left: 5px;
+        height: 1px;
+        width: 93%;
+        width: calc(100% - 28px);
+    }
+    /** divider circle **/
+    .today ~ .header-events-cover span:first-child:after {
+        content: ' ';
+        position: absolute;
+        bottom: 6px;
+        background: #4285f4;
+        left: 4px;
+        height: 15px;
+        width: 15px;
+        border-radius: 50%;
+    }
+
+    .events, .birthdays {
+        min-height: 45px;
+    }
+
+    /** hide element but need to leave :after/:before pseudo element to make "o----------" divider **/
+    .header-events-cover span.more-events {
+        /*display: none;*/
+        padding: 0;
+        height: 0;
+        color: transparent;
+        background: transparent;
+        width: 0;
+        font-size: 0;
+        line-height: 0;
+        margin-top: -33px;
+    }
+
+    .important {
+        background: #7bb241;
+    }
+
+    .day-body {
+        height: initial;
+        width: 80%;
+        width: calc(100vw - 80px);
+        float: right;
+        padding: 0 22px;
+    }
+
+    .day-body .event-cover {
+        position: relative;
+        top: inherit;
+        height: inherit;
+    }
+
+    .day-body .event-cover:last-child {
+        margin-bottom: 0;
+    }
+
+    .header-events-cover span,
+    .event-cover span {
+        font-size: 20px;
+        line-height: 26px;
+    }
+
+    .description, .person-name, .events {
+        font-weight: 500;
+    }
+
+    .person-specific .description {
+        font-weight: 300;
+    }
+
+    /** show birthday person **/
+    .header-events-cover .birthdays.short {
+        height: 0;
+        margin-top: -28px;
+        background: transparent;
+        color: transparent;
+    }
+    .header-events-cover .birthdays.person {
+        display: block;
+        position: relative;
+        text-transform: capitalize;
+    }
+    .birthdays.person:after {
+        content: 'Birthday';
+        display: block;
+    }
+
+    .header-events-cover .birthdays.person:before {
+        content: ' ';
+    }
+
+    .header-events-cover .birthdays.person:before,
+    .person-specific .avatar {
+        display: block;
+        height: 46px;
+        width: 46px;
+        background: #9E9E9E;
+        border-radius: 50%;
+        position: absolute;
+        right: 18px;
+        top: 50%;
+        transform: translateY(-50%);
+        background-position: center;
+        background-size: cover;
+    }
+
+    .header-events-cover .birthdays.person.p-alice:before {
+        background-image: url("/img/p-alice.jpg");
+    }
+    .header-events-cover .birthdays.person.p-bob:before {
+        background-image: url("/img/p-marley.jpg");
+    }
+    .header-events-cover .birthdays.person.p-lorem:before {
+        background-image: url("/img/p-loren.jpg");
+    }
+    .header-events-cover .birthdays.person.p-steve:before {
+        background-image: url("/img/p-steve.jpg");
+    }
+    .header-events-cover .birthdays.person.p-hakon:before {
+        background-image: url("/img/p-hakon.jpg");
+    }
+
+
+    /** special kind of events **/
+    .event-cover  .place {
+        display: block;
+    }
+
+    .event-cover.card {
+        height: 145px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        background-position: center;
+        background-size: cover;
+    }
+
+    .crd-park {
+        background-image: url("/img/c-park.jpg");
+    }
+
+    .crd-restaurant {
+        background-image: url("/img/c-restaurant.jpg");
+    }
+
+    .crd-bar {
+        background-image: url("/img/c-bar.jpg");
+    }
+
+    .crd-big-city {
+        background-image: url("/img/c-big-city.jpg");
+    }
+
+    /** person specific (with photo) **/
+    .person-specific {
+        min-height: 75px;
+    }
+
+    .person-specific .person-name {
+        display: block;
+        text-transform: capitalize;
+    }
+
+    .pers-lucas .avatar{
+        background-image: url("/img/p-lucas.jpg");
+    }
+
+
+
+    table.back-table {
+        display: none;
+    }
+
+    .round-button-container {
+        bottom: 22px;
+        right: 22px;
+    }
 }
 
+
 /** N. hardcode events position **/
-#event-1 {
+.time-9-am {
     top: 58px;
+}
+.time-10_30-am {
+    top: 146px;
+}
+.time-11-am {
+    top: 172px;
+}
+.time-12-pm {
+    top: 229px;
+}
+.time-12_30-pm {
+    top: 260px;
+}
+.time-1-pm {
+    top: 286px;
+}
+.time-3-pm {
+    top: 400px;
+}
+.time-6-pm {
+    top: 571px;
+}
+.time-7-pm {
+    top: 628px;
+}
+
+.lasts-30-min {
+    height: 28px;
+}
+.lasts-60-min {
     height: 55px;
 }
-#event-2 {
-    top: 172px;
-    height: 227px;
-}
-#event-3 {
-    top: 146px;
+.lasts-90-min {
     height: 83px;
 }
-#event-4 {
-    top: 260px;
+.lasts-120-min {
     height: 113px;
 }
-#event-5 {
-    top: 400px;
-    height: 28px;
-}
-#event-6 {
-    top: 172px;
-    height: 28px;
-}
-#event-7 {
-    top: 229px;
-    height: 83px;
-}
-#event-8 {
-    top: 172px;
-    height: 28px;
-}
-#event-9 {
-    top: 286px;
+.lasts-210-min {
     height: 201px;
 }
-#event-10 {
-    top: 172px;
-    height: 56px;
-}
-#event-11 {
-    top: 628px;
+.lasts-240-min {
     height: 227px;
 }
-#event-12 {
-    top: 571px;
+.lasts-300-min {
     height: 284px;
+
 }
+
+
+
+
+
+
 
 /** N. sticky dates **/
 /* todo make it a switchable option! */
+/* todo make white outline to make dates more readable */
 
-#sticky-dates-trigger {
-    /*display: none;*/
+.trigger {
+    display: none;
 }
 
-#sticky-dates-trigger:checked ~ .column>.day-header {
+/** trigger: sticky-dates **/
+@media screen and (min-width: 768px) {
+    #sticky-dates:checked ~ .column>.day-header {
+        position: absolute;
+        width: calc(14.28% - 28px);
+        height: 100%;
+        z-index: 200;
+    }
+    #sticky-dates:checked ~ .column>.day-body {
+        margin-top: 185px;
+        z-index: 150;
+    }
+    #sticky-dates:checked ~ .column>.day-header>.date-cover {
+        position: sticky;
+        top: -1px;
+        width: 112%;
+        margin-left: -8%;
+        padding-left: 8%;
+        background: rgba(255, 255, 255, 0.49);
+    }
+}
+@media screen and (max-width: 767px) {
+    #sticky-dates:checked ~ .column {
+        position: sticky;
+        top: 10px;
+        background: white;
+        min-height: calc(100vh - 230px);
+    }
+    #sticky-dates:checked ~ .column:last-child {
+        min-height: calc(100vh - 140px);
+    }
+}
+
+/** trigger: divide line in all days **/
+/** divider line **/
+#divider-on-each-day:checked ~ .column .header-events-cover span:first-child:before {
+    content: ' ';
     position: absolute;
-    width: calc(14.28% - 28px);
-    height: 100%;
-    z-index: 200;
+    bottom: 13px;
+    background: #0066f2;
+    left: 5px;
+    height: 1px;
+    width: 93%;
+    width: calc(100% - 28px);
 }
-#sticky-dates-trigger:checked ~ .column>.day-body {
-    margin-top: 185px;
-    z-index: 150;
-}
-#sticky-dates-trigger:checked ~ .column>.day-header>.date-cover {
-    position: sticky;
-    top: -1px;
-    width: 112%;
-    margin-left: -8%;
-    padding-left: 8%;
-    background: rgba(255, 255, 255, 0.49);
+/** divider circle **/
+#divider-on-each-day:checked ~ .column .header-events-cover span:first-child:after {
+    content: ' ';
+    position: absolute;
+    bottom: 6px;
+    background: #4285f4;
+    left: 4px;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
 }
