@@ -402,7 +402,7 @@ table.back-table span {
         height: calc(100vh - 85px);
     }
 
-    main {
+    .main-container main {
         flex-direction: column;
         margin: 0;
     }
