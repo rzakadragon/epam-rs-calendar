@@ -19,12 +19,39 @@
         <![endif]-->
 
         <input type="checkbox" class="trigger" id="burger-menu" -checked>
+        <input type="checkbox" class="trigger" id="dot-menu" -checked>
 
         <div class="header-container">
             <header>
 
                 <label class="control burger-menu" for="burger-menu">
                     <div class="burger-icon"></div>
+                </label>
+
+                <div class="control month-picklist">
+                    <span>&#x25be</span>
+                    <select name="select">
+                        <option value="January">January</option>
+                        <option value="February" selected>February</option>
+                        <option value="March">March</option>
+                        <option value="April">April</option>
+                        <option value="May">May</option>
+                        <option value="June">June</option>
+                        <option value="July">July</option>
+                        <option value="August">August</option>
+                        <option value="September">September</option>
+                        <option value="October">October</option>
+                        <option value="November">November</option>
+                        <option value="December">December</option>
+                    </select>
+                </div>
+
+                <div class="calendar-element">
+                    <span class="calendar-icon">8</span>
+                </div>
+
+                <label class="control dot-menu" for="dot-menu">
+                    <div class="dot-icon"></div>
                 </label>
 
             </header>
