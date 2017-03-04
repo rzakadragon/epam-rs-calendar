@@ -1,11 +1,3 @@
-/** 0. font style  **/
-body {
-    font-family: 'Roboto', sans-serif;
-}
-table.back-table {
-    font-size: 14px;
-}
-
 /** 0. browser upgrade message **/
 .browserupgrade {
     margin: 0.2em 0;
@@ -18,16 +10,26 @@ html.halt body {
     background: black;
 }
 
-/** 1. general elements positioning ( M-L-XL size ) **/
 
+/** 1. font  **/
+body {
+    font-family: 'Roboto', sans-serif;
+}
+table.back-table {
+    font-size: 14px;
+}
+
+
+/** 2. general elements positioning ( M-L-XL size ) **/
+
+/** 2.1 header section and menus **/
 .header-container {
     background: #FF9800;
     height: 150px;
-    background-image: url("/img/header-background-el.jpg");
+    background-image: url("/img/header-background.jpg");
     background-position: center;
     background-size: cover;
 }
-
 .header-container header {
     width: 100%;
     height: 100%;
@@ -46,11 +48,18 @@ html.halt body {
     height: 1.7em;
     box-sizing: border-box;
     cursor: pointer;
+    transition: all .1s;
+}
+.burger-menu:hover,
+.dot-menu:hover,
+.control:hover {
+    background: rgba(255, 255, 255, 0.35);
 }
 .burger-menu{
     top: 17px;
     left: 23px;
-    padding: 0.55em 0.4em;
+    padding: 0.45em 0.32em;
+    z-index: 200;
 }
 .burger-icon {
     background-color: currentColor;
@@ -66,6 +75,7 @@ html.halt body {
     width: 0.9em;
     height: 0.1em;
     background-color: currentColor;
+    transition: all 0.15s;
 }
 .burger-icon:before {
     top: 0;
@@ -74,8 +84,7 @@ html.halt body {
     bottom: 0;
 }
 
-
-/** month-picklist **/
+/** drawing month-picklist **/
 .month-picklist {
     left: 89px;
     top: 21px;
@@ -106,11 +115,10 @@ html.halt body {
     top: 3px;
 }
 
-/** dot menu **/
+/** drawing dot menu **/
 .dot-menu {
     right: 8px;
     top: 14px;
-    /*padding: 10px 9px;*/
 }
 .dot-icon,
 .dot-icon:before,
@@ -138,12 +146,192 @@ html.halt body {
     transform: translateX(-50%);
 }
 
+/** sidebar menu and it's checkbox actions ( burger button ) **/
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    background: rgb(0, 0, 0);
+    height: 100%;
+    width: 40%;
+    z-index: 100;
+    transition: all .2s;
+    padding: 80px 5%;
+    color: white;
+    box-sizing: border-box;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+.sidebar .options {
+    padding: 0;
+    margin: 0;
+}
+.sidebar .options label {
+    text-align: center;
+    list-style: none;
+    margin: 5% 0;
+    padding: 3%;
+    cursor: pointer;
+    letter-spacing: 5px;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+}
+
+/** hide trigger checkboxes **/
+.trigger {
+    display: none;
+}
+
+input[type=checkbox]#sticky-dates:checked ~ .sidebar .options label.option-sticky,
+input[type=checkbox]#divider-on-each-day:checked ~ .sidebar .options label.option-divider {
+    border: 1px solid currentColor;
+}
+
+.sidebar .options label {
+    display: inline-block;
+    width: 93.5%;
+    cursor: pointer;
+}
+.sidebar .options label:hover {
+    background: rgba(255, 255, 255, 0.29);
+}
+
+.sidebar .hint {
+    position: absolute;
+    left: 10%;
+    bottom: 5%;
+    width: 80%;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.sidebar .curtain {
+    transition: all 0.3s;
+}
+input[type=checkbox]#burger-menu:checked ~ .sidebar {
+    left: 0;
+}
+input[type=checkbox]#burger-menu:checked ~ .sidebar .curtain {
+    height: 100%;
+    width: 200%;
+    position: absolute;
+    left: 100%;
+    top: 0;
+
+    background: -moz-linear-gradient(left, rgba(0, 0, 0, 0.15),rgba(0,0,0,0) 100%);
+    background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.15),rgba(0,0,0,0) 100%);
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.15),rgba(0,0,0,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=1 );
+}
+input[type=checkbox]#burger-menu:checked ~ .sidebar .curtain:hover {
+    background: -moz-linear-gradient(left, rgba(0, 0, 0, 0.1),rgba(0,0,0,0) 100%);
+    background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.1),rgba(0,0,0,0) 100%);
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.1),rgba(0,0,0,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=1 );
+}
+input[type=checkbox]#burger-menu:checked ~ .header-container .burger-menu {
+    position: fixed;
+    background: rgba(255, 255, 255, 0.2);
+}
+input[type=checkbox]#burger-menu:checked ~ .header-container .burger-menu:hover {
+    background: rgba(255, 255, 255, 0.35);
+}
+input[type=checkbox]#burger-menu:checked ~ .header-container .burger-icon {
+    background-color: transparent;
+}
+input[type=checkbox]#burger-menu:checked ~ .header-container .burger-icon:before,
+input[type=checkbox]#burger-menu:checked ~ .header-container .burger-icon:after {
+    top: 50%;
+    background-color: white;
+}
+input[type=checkbox]#burger-menu:checked ~ .header-container .burger-icon:before {
+    transform: rotate(45deg);
+}
+input[type=checkbox]#burger-menu:checked ~ .header-container .burger-icon:after {
+    transform: rotate(-45deg);
+}
+
+/** drop down menu and it's checkbox actions ( dot button ) **/
+.drop-down-menu {
+    position: fixed;
+    top: -300px;
+    right: 0;
+    width: 300px;
+    height: 300px;
+    /*box-sizing: border-box;*/
+    /*padding: 0.5% 0;*/
+    background: white;
+    z-index: 350;
+    transition: all .3s;
+}
+input[type=checkbox]#dot-menu:checked ~ .drop-down-menu {
+    top: 0;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+.drop-down-menu .options {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.drop-down-menu .options label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: 1% 2%;
+    cursor: pointer;
+    transition: all .15s;
+}
+.drop-down-menu .options label:first-child {
+    margin-top: 2%;
+}
+.drop-down-menu .options label:last-child {
+    margin-bottom: 2%;
+}
+.drop-down-menu .options label:hover {
+    background-color: rgba(33, 33, 33, 0.05);
+}
+
+.drop-down-menu ~ .curtain {
+    top: -100%;
+    transition: background .3s;
+    background: transparent;
+}
+input[type=checkbox]#dot-menu:checked ~ .curtain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 250;
+    background: rgba(33, 33, 33, 0.2);
+}
+
+/** menu buttons material-like hover animation  **/
+.dot-menu,
+.burger-menu {
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all .15s, border .5s ease-in;
+}
+.dot-menu:hover,
+.burger-menu:hover {
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    transition: all .15s;
+}
+.dot-menu:hover,
+.burger-menu:hover {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    transform: translateY(-1px);
+}
+
+
+/** 2.2 main section - calendar **/
 .main-container {
     position: relative;
     width: 100%;
 }
-
-/** calendar element **/
 .calendar-element {
     position: absolute;
     width: 1.5em;
@@ -179,149 +367,140 @@ html.halt body {
     border-right: 0.15em solid currentColor;
 }
 
-
 .main-container main {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-content: stretch;
-
     margin-left: 50px;
-
-    /*background: azure;*/
 }
 
 .column {
-    /* day_column_width = 100% / 7 = 14.28% */
+    /* day_column_width = ( 100% / 7 ) = 14.28% */
     width: 14.28%;
     padding: 0 10px;
-
-    /*background: rgba(0, 255, 255, 0.14);*/
-    /*border: 1px solid rgba(76, 175, 80, 0.54);*/
-
     z-index: 100;
 }
 
+.day-header {
+    height: 185px;
+}
+.date-cover {
+    height: 99px;
+    box-sizing: border-box;
+    padding-top: 10px;
+}
+.weekday {
+    font-size: 16px;
+    padding-left: 8px;
+    font-weight: 500;
+}
+.date {
+    font-size: 58px;
+    line-height: 58px;
+    padding-left: 7px;
+    display: block;
+}
+
+.header-events-cover {
+    height: 85px;
+}
+.header-events-cover span {
+    color: #fff;
+    font-size: 14px;
+    line-height: 14px;
+    display: block;
+    box-sizing: border-box;
+    min-height: 26px;
+    margin-bottom: 2px;
+    padding: 7px 0 0 9px;
+    border-radius: 3px;
+}
+.birthdays {
+    background: #33b679;
+}
+.birthdays.person {
+    display: none;
+}
+.events {
+    background: #029ae4;
+}
+span.more-events {
+    color: #616161;
+    cursor: pointer;
+}
+.more-events:hover {
+    text-decoration: underline;
+}
+
+.day-body {
+    position: relative;
+    box-sizing: border-box;
+    height: 1368px;
+}
+.event-cover {
+    position: absolute;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 5px 8px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 14px;
+    background: #029ae4;
+}
+.important {
+    background: #f05722;
+}
+.event-cover span {
+    display: block;
+}
+.time {
+    text-transform: uppercase;
+}
+.event-cover .place,
+.event-cover .person-name,
+.avatar {
+    display: none;
+}
+
+/** events material-like hover animation  **/
+.event-cover,
+.events,
+.birthdays {
+    transition: all .15s;
+    cursor: pointer;
+}
+.event-cover:hover,
+.events:hover,
+.birthdays:hover {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    transform: translateY(-1px);
+}
+
+
+/** 3. table background layout **/
 table.back-table {
     position: absolute;
     width: 100%;
     top: 0;
     left: 0;
 }
-
-.day-header {
-    height: 185px;
-    /*background: rgba(255, 192, 203, 0.55);*/
-}
-    .date-cover {
-        height: 99px;
-        /*background: aliceblue;*/
-        box-sizing: border-box;
-        padding-top: 10px;
-    }
-        .weekday {
-            font-size: 16px;
-            padding-left: 8px;
-            font-weight: 500;
-        }
-        .date {
-            font-size: 58px;
-            line-height: 58px;
-            padding-left: 7px;
-            display: block;
-        }
-        
-    .header-events-cover {
-        height: 85px;
-        /*background: indianred;*/
-    }
-        .header-events-cover span {
-            color: #fff;
-            font-size: 14px;
-            line-height: 14px;
-            display: block;
-            box-sizing: border-box;
-            min-height: 26px;
-            margin-bottom: 2px;
-            padding: 7px 0 0 9px;
-            border-radius: 3px;
-        }
-        .birthdays {
-            background: #33b679;
-        }
-        .birthdays.person {
-            display: none;
-        }
-        .events {
-            background: #029ae4;
-        }
-        span.more-events {
-            color: #616161;
-        }
-        .more-events:hover {
-            text-decoration: underline;
-        }
-
-.day-body {
-    position: relative;
-    box-sizing: border-box;
-    height: 1368px;
-    /*background: rgba(240, 255, 243, 0.6);*/
-}
-    .event-cover {
-        position: absolute;
-        box-sizing: border-box;
-        width: 100%;
-        padding: 5px 8px;
-        border-radius: 3px;
-        color: #fff;
-        font-size: 14px;
-        background: #029ae4;
-    }
-        .important {
-            background: #f05722;
-        }
-        .event-cover span {
-            display: block;
-        }
-        .description {
-
-        }
-        .time {
-            text-transform: uppercase;
-        }
-        .event-cover .place {
-            display: none;
-        }
-        .event-cover .person-name {
-            display: none;
-        }
-        .avatar {
-            display: none;
-        }
-
-
-/** 2. table background layout **/
 table.back-table th {
     height: 185px;
     border-left: 1px solid #EEE;
 }
-
 table.back-table td {
     height: 28px;
     border-left: 1px solid #EEE;
 }
-
 table.back-table tbody tr:nth-child(even) td:nth-child(n+2),
 table.back-table th {
     border-bottom: 1px solid #eee;
 }
-
 table.back-table tbody tr td:first-child {
     width: 49px;
     position: relative;
 }
-
 table.back-table span {
     position: absolute;
     width: 100%;
@@ -331,7 +510,8 @@ table.back-table span {
     color: #757575;
 }
 
-/** 3. round "+" button **/
+
+/** 4. round "+" button **/
 .round-button-container {
     position: fixed;
     bottom: 28px;
@@ -368,22 +548,44 @@ table.back-table span {
 }
 
 
+/** 5. media adjustments **/
 
-/** 4. adapt for S size **/
-
+/**for S size **/
 @media screen and (max-width: 767px) {
     .header-container {
-        position: fixed;
         top: 0;
         left: 0;
         height: 85px;
         width: 100%;
         background: #ffffff;
     }
-
     .header-container header {
         height: 80px;
+        font-size: 28px;
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07), 0 6px 20px rgba(0, 0, 0, 0.12);
+    }
+    /** next few lines are written in a name of pixel-perfect! **/
+    .month-picklist span {
+        top: 1px;
+    }
+    .calendar-element {
+        top: 20px;
+        right: 74px;
+    }
+    .burger-menu {
+        top: 18px;
+        left: 15px;
+        padding: 0.45em 0.33em;
+    }
+    .dot-menu {
+        top: 17px;
+        right: 13px;
+    }
+
+    .drop-down-menu {
+        left: 50%;
+        transform: translate(-50%);
+        width: 98%;
     }
 
     .header-events-cover span,
@@ -418,7 +620,7 @@ table.back-table span {
     }
 
     .date-cover {
-        height: 70px;
+        height: 62px;
         box-sizing: border-box;
         padding-top: 0;
         width: 80px;
@@ -434,15 +636,17 @@ table.back-table span {
     }
 
     .date {
-        font-size: 43px;
-        padding-left: 25px;
+        font-size: 42px;
+        padding-left: 22px;
         line-height: 43px;
+        font-weight: 400;
     }
     .weekday {
-        font-size: 21px;
+        font-size: 18px;
         position: absolute;
         bottom: 0;
         padding-left: 25px;
+        font-weight: 400;
     }
 
     .header-events-cover {
@@ -456,7 +660,7 @@ table.back-table span {
         position: relative;
     }
 
-    .header-events-cover *:last-child {
+    .today ~ .header-events-cover *:last-child {
         margin-bottom: 25px;
     }
 
@@ -588,7 +792,6 @@ table.back-table span {
         background-image: url("/img/p-hakon.jpg");
     }
 
-
     /** special kind of events **/
     .event-cover  .place {
         display: block;
@@ -633,8 +836,6 @@ table.back-table span {
         background-image: url("/img/p-lucas.jpg");
     }
 
-
-
     table.back-table {
         display: none;
     }
@@ -643,10 +844,30 @@ table.back-table span {
         bottom: 22px;
         right: 22px;
     }
+
+    /** sidebar adjustments **/
+    .sidebar {
+        width: 80%;
+        font-size: 16px;
+    }
+    .sidebar .hint {
+        bottom: 0;
+        font-size: 16px;
+    }
+}
+
+/** for XS size **/
+@media screen and (max-width: 350px) {
+    .burger-menu {
+        left: 17px;
+    }
+    .month-picklist {
+        left: 65px;
+    }
 }
 
 
-/** N. hardcode events position **/
+/** 6. hardcode events positions and height **/
 .time-9-am {
     top: 58px;
 }
@@ -698,33 +919,21 @@ table.back-table span {
 
 }
 
+/** 7. optional bonus features **/
 
-
-
-
-
-
-/** N. sticky dates **/
-/* todo make it a switchable option! */
-/* todo make white outline to make dates more readable */
-
-.trigger {
-    display: none;
-}
-
-/** trigger: sticky-dates **/
+/** changeable by trigger in sidebar: sticky-dates **/
 @media screen and (min-width: 768px) {
-    #sticky-dates:checked ~ .column>.day-header {
+    #sticky-dates:checked ~ .main-container .column>.day-header {
         position: absolute;
         width: calc(14.28% - 28px);
         height: 100%;
         z-index: 200;
     }
-    #sticky-dates:checked ~ .column>.day-body {
+    #sticky-dates:checked ~ .main-container .column>.day-body {
         margin-top: 185px;
         z-index: 150;
     }
-    #sticky-dates:checked ~ .column>.day-header>.date-cover {
+    #sticky-dates:checked ~ .main-container .column>.day-header>.date-cover {
         position: sticky;
         top: -1px;
         width: 112%;
@@ -734,37 +943,44 @@ table.back-table span {
     }
 }
 @media screen and (max-width: 767px) {
-    #sticky-dates:checked ~ .column {
+    #sticky-dates:checked ~ .main-container .column {
         position: sticky;
         top: 10px;
         background: white;
         min-height: calc(100vh - 230px);
     }
-    #sticky-dates:checked ~ .column:last-child {
+    #sticky-dates:checked ~ .main-container .column:last-child {
         min-height: calc(100vh - 140px);
     }
 }
 
-/** trigger: divide line in all days **/
-/** divider line **/
-#divider-on-each-day:checked ~ .column .header-events-cover span:first-child:before {
-    content: ' ';
-    position: absolute;
-    bottom: 13px;
-    background: #0066f2;
-    left: 5px;
-    height: 1px;
-    width: 93%;
-    width: calc(100% - 28px);
-}
-/** divider circle **/
-#divider-on-each-day:checked ~ .column .header-events-cover span:first-child:after {
-    content: ' ';
-    position: absolute;
-    bottom: 6px;
-    background: #4285f4;
-    left: 4px;
-    height: 15px;
-    width: 15px;
-    border-radius: 50%;
+/** changeable by trigger in sidebar: divide line in all days **/
+@media screen and (max-width: 767px) {
+
+    #divider-on-each-day:checked ~ .main-container .column .header-events-cover *:last-child {
+        margin-bottom: 25px;
+    }
+
+    #divider-on-each-day:checked ~ .main-container .column .header-events-cover span:first-child:before {
+        content: ' ';
+        position: absolute;
+        bottom: 13px;
+        background: #0066f2;
+        left: 5px;
+        height: 1px;
+        width: 93%;
+        width: calc(100% - 28px);
+    }
+
+    /** divider circle **/
+    #divider-on-each-day:checked ~ .main-container .column .header-events-cover span:first-child:after {
+        content: ' ';
+        position: absolute;
+        bottom: 6px;
+        background: #4285f4;
+        left: 4px;
+        height: 15px;
+        width: 15px;
+        border-radius: 50%;
+    }
 }

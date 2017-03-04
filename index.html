@@ -18,8 +18,42 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
+        <!--
+                Here is my pixel-perfect realization of Rolling Scopes homework task.
+
+                Animations:
+                    1. Events in calendar are "rising up" on cursor hover
+                    2. The same for buttons in the header
+                    3. Also this buttons ( hamburger button and vertical dots button ) are clickable,
+                    they trigger the navbars to appear ( I was using hidden checkboxes for it )
+                    4. Menu items has hover effects too
+
+                Calendar is made using flex elements to make it's data to be reusable when layout adapts to small screen
+                size.
+
+                I was using <table> element to make pretty background for calendar on desktop view.
+
+                Hamburger button menu items are triggering some styling features.
+                You can read what they does at the bottom of the sidebar when you open it.
+
+                When you open side menu bar there is also a curtain covering whole other part of the screen.
+                It's a one big half-transparent dark label element that is linked to the same checkbox that is
+                triggering the side menu bar to appear so if you click outside the menu - you'll close it.
+
+                This site will be also available for some time at http://dev.guide-brest.com/
+
+                I hope you enjoy my work.
+
+                Cheers!
+
+                Richard ( ziankevichrichard@gmail.com )
+        -->
+
         <input type="checkbox" class="trigger" id="burger-menu" -checked>
         <input type="checkbox" class="trigger" id="dot-menu" -checked>
+
+        <input type="checkbox" class="trigger" id="sticky-dates" -checked>
+        <input type="checkbox" class="trigger" id="divider-on-each-day" -checked>
 
         <div class="header-container">
             <header>
@@ -60,10 +94,6 @@
         <div class="main-container">
 
             <main>
-
-                <input type="checkbox" class="trigger" id="sticky-dates" -checked>
-                <input type="checkbox" class="trigger" id="divider-on-each-day" -checked>
-
                 <div class="column">
                     <div class="day-header">
                         <div class="date-cover last-day">
@@ -221,12 +251,11 @@
 
             </main>
 
-            <!--<nav></nav>-->
-            <!--<aside></aside>-->
             <div class="round-button-container">
                 <button class="round-btn"></button>
             </div>
             <!-- this table makes grid background -->
+            <!-- it's empty and has only time labels -->
             <table class="back-table">
                 <thead>
                     <tr>
@@ -726,7 +755,44 @@
 
         </div> <!-- #main-container -->
 
-        <!--<footer></footer>-->
+        <div class="sidebar">
+            <div class="options">
+                <label class="option-sticky" for="sticky-dates">
+                    <span>switch sticky dates</span>
+                </label>
+                <label class="option-divider" for="divider-on-each-day">
+                    <span>switch divider on each dates (mobile)</span>
+                </label>
+            </div>
 
+            <div class="hint">
+                <p>This options are clickable.</p>
+                <p><mark>Switch sticky dates</mark>: makes date stay on top of screen when you scroll down.</p>
+                <p><mark>Switch divider on each dates</mark>: add's blue divider to separate day key events for each dates, not only for present day.</p>
+            </div>
+
+            <label for="burger-menu" class="curtain"></label>
+        </div>
+
+        <div class="drop-down-menu">
+            <div class="options">
+                <label class="" for="dot-menu">
+                    <span>lorem</span>
+                </label>
+                <label class="" for="dot-menu">
+                    <span>ipsum</span>
+                </label>
+                <label class="" for="dot-menu">
+                    <span>dolor</span>
+                </label>
+                <label class="" for="dot-menu">
+                    <span>sit</span>
+                </label>
+                <label class="" for="dot-menu">
+                    <span>amet</span>
+                </label>
+            </div>
+        </div>
+        <label for="dot-menu" class="curtain"></label>
     </body>
 </html>
